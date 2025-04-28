@@ -1,0 +1,174 @@
+{
+  "reservations": [
+    {
+      "booked_at": "2017-09-03",
+      "commissionamount": "72.63",
+      "currencycode": "NZD",
+      "paymenttype": "Hotel Collect",
+      "hotel_id": "11122010",
+      "hotel_name": "The Rosehotel Motel",
+      "paymentdue": "",
+      "customer": {
+        "address": "Holly Tree Barn Commonside",
+        "cc_cvc": "",
+        "cc_expiration_date": "",
+        "cc_name": "",
+        "cc_number": "",
+        "cc_type": "",
+        "cc_current_balance": "125.36",
+        "cc_activation_date": "2020-05-28",
+        "vcc_expiration_date": "2020-06-02",
+        "cc_token": "12589463532",
+        "cc_token_expiration": "2020-12-12",
+        "cc_unique_code": "c237b1ba20f5c2cbe32f47e6db1d1c58",
+        "city": "Frodsham",
+        "state": "",
+        "countrycode": "gb",
+        "email": "aparry.562285@guest.mail.com",
+        "first_name": "staah - Alun",
+        "last_name": "Parry",
+        "remarks": "Approximate time of arrival: between 17:00 and 18:00",
+        "telephone": "+44 7808 140655",
+        "zip": "WA6 9HA",
+        "cc_vault_token": "",
+        "cc_tracking_id": ""
+      },
+      "rooms": [
+        {
+          "arrival_date": "2018-03-11",
+          "departure_date": "2018-03-13",
+          "info": "",
+          "facilities": "",
+          "taxes": [
+            {
+              "name": "Slab %",
+              "value": "175.0"
+            },
+            {
+              "name": "Flat %",
+              "value": "353.5"
+            }
+          ],
+          "specialrequest": "",
+          "eta": "",
+          "guest_name": "Alun Parry",
+          "first_name": "Alun",
+          "last_name": "Parry",
+          "id": "1000202",
+          "max_children": "0",
+          "numberofguests": "2",
+          "numberofchildren": "0",
+          "numberofadults": "2",
+          "roomstaystatus": "new",
+          "roomreservation_id": "123654789",
+          "totalbeforetax": "568.98",
+          "totaltax": "63.22",
+          "totalprice": "632.20",
+          "price": [
+            {
+              "date": "2018-03-11",
+              "rate_id": "1",
+              "mealplan_id": "15",
+              "mealplan": "Room Only",
+              "tax": "31.61",
+              "pricebeforetax": "174.49",
+              "priceaftertax": "206.1"
+            },
+            {
+              "date": "2018-03-12",
+              "rate_id": "1",
+              "mealplan_id": "15",
+              "mealplan": "Room Only",
+              "tax": "31.61",
+              "pricebeforetax": "174.49",
+              "priceaftertax": "206.1"
+            }
+          ],
+          "adults": [
+            "XXX XXX",
+            "YYY YYY"
+          ],
+          "addons": [
+            {
+              "name": "Breakfast",
+              "nights": "2",
+              "priceperunit": "18.00",
+              "pricemode": "4",
+              "price": "72.00",
+              "taxes": [
+                {
+                  "name": "Slab %",
+                  "value": "175.0"
+                },
+                {
+                  "name": "Flat %",
+                  "value": "353.5"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "extracomponents": [
+        {
+          "name": "Service Charge",
+          "value": "108"
+        },
+        {
+          "name": "Cleaning Fee",
+          "value": "40"
+        }
+      ],
+      "bed_type": "Queen",
+      "affiliation": {
+        "pos": "Expedia",
+        "source": "expedia",
+        "OTA_Code": "9",
+        "gstno": "010101ABCD",
+        "companyname": "UltraTech",
+        "companyaddress": "Noida, Uttar Pradesh"
+      },
+      "otadue": "",
+      "nettamount": "160.00",
+      "cancelreason": "",
+      "confirmationlink": "",
+      "payment_charge": "",
+      "channel_booking_id": "180538ABD2269",
+      "thread_id": "20101986",
+      "guest_id": "101986",
+      "numberofpets": "",
+      "numberofinfants": "",
+      "listingbaseprice": "110",
+      "processed_at": "2021-08-13 05:43:10",
+      "deposit": "10.20",
+      "cancellation_fee": "",
+      "vendor_booking_id": "NH7201152942756",
+      "id": "1805382269_11122010",
+      "reservation_notif_id": "152420368316228301205",
+      "modified_at": "2017-09-03",
+      "status": "new",
+      "totalprice": "632.20",
+      "totaltax": "63.22",
+      "extrafees": [
+        {
+          "name": "Airbnb Service",
+          "amount": "22.05"
+        },
+        {
+          "name": "Airbnb S1ervice",
+          "amount": "22.05"
+        }
+      ],
+      "taxes": [
+        {
+          "name": "VAT/GST (Ptt_authority_175960)",
+          "amount": "43.22"
+        },
+        {
+          "name": "Tourist Tax (Ptt_authority_175961)",
+          "amount": "20.00"
+        }
+      ]
+    }
+  ]
+}
