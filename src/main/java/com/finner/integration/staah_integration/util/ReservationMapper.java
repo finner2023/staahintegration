@@ -1,11 +1,12 @@
 package com.finner.integration.staah_integration.util;
 
 import com.finner.integration.staah_integration.Model.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-
+@Slf4j
 public class ReservationMapper {
 
     public static ProcessedReservationNewDTO mapToNewProcessed(StaahReservation reservation, Room room) {
@@ -105,6 +106,7 @@ public class ReservationMapper {
             LocalDate outDate = LocalDate.parse(checkout, formatter);
             return (int) ChronoUnit.DAYS.between(inDate, outDate);
         } catch (Exception e) {
+            log.warn("⚠️ Failed to calculate days between [{}] and [{}]: {}", checkin, checkout, e.getMessage());
             return 1;
         }
     }
