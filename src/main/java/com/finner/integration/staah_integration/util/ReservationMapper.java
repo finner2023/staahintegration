@@ -48,14 +48,14 @@ public class ReservationMapper {
         return ProcessedReservationModifiedDTO.builder()
                 .guest_name(customer.getFirst_name() + " " + customer.getLast_name())
                 .guest_email(customer.getEmail())
-                .parent_property(reservation.getHotel_id())
+
                 .totalamount(reservation.getCommissionamount()) // Adjust if needed
                 .tax_amount(parseDouble(room.getTotaltax()))
                 .OTAChannel(affiliation.getPos()) // Adjust accordingly
                 .guestphone(String.valueOf(customer.getTelephone()))
                 .checkin_date(room.getArrival_date())
                 .checkOutdate(room.getDeparture_date())
-                .phone_countryC(customer.getCountrycode())
+                .phone_countryCode(customer.getCountrycode())
                 .room_category(room.getRoomType())
                 .no_of_guest(parseInt(room.getNumberofguests()))
                 .currency(reservation.getCurrencycode())
@@ -67,7 +67,8 @@ public class ReservationMapper {
                 .pay_hotelOTA(reservation.getPaymenttype())
                 .Natonality(customer.getCountrycode())
                 .guest_address(customer.getAddress())
-                .meal_plan_optic(price.getMealplan_id())
+                .meal_plan_optionset(price.getMealplan_id())
+                .channel_manager_id(reservation.getHotel_id())
                 // For modifications, include any modification reasoning, if required. Since field names match your screenshot exactly,
                 // we assume the modification reason is passed in a separate mechanism. For now, if not used, it can be left empty.
                 .modification_reason(modificationReason)
@@ -76,17 +77,21 @@ public class ReservationMapper {
 
     public static ProcessedReservationCancelDTO mapToCancelProcessed(StaahReservation reservation, Room room, String cancelReason) {
         Customer customer = reservation.getCustomer();
+        int days = calculateDays(room.getArrival_date(), room.getDeparture_date());
+        Price price=reservation.getPrice().get(0);
+        Affiliation affiliation=reservation.getAffiliation();
         return ProcessedReservationCancelDTO.builder()
-                .otabooking_id("OTABOOKINGID") // Derive as required
+                .parent_property("")
+                .total_amount(Double.parseDouble(reservation.getTotalprice())) // carefully mapped
+                .tax_amount(Double.parseDouble(reservation.getTotaltax()))
+                .OTA_Channel(affiliation != null ? affiliation.getPos() : "Unknown") // fallback if affiliation missing
+                .checkIn_date(room.getArrival_date())
+                .checkOut_date(room.getDeparture_date())
+                .room_category(room.getId()) // or room.getRoomType() if needed
+                .ota_booking_id(reservation.getChannel_booking_id())
                 .ota_property_id(reservation.getHotel_id())
-                .reason_of_cancellation(cancelReason)
-                .pms_transaction_id(room.getRoomreservation_id())
-                .cancelled_by("STAAH") // or derive from reservation/room if available
-                .guest_name(customer.getFirst_name() + " " + customer.getLast_name())
-                .guestphone(String.valueOf(customer.getTelephone()))
-                .guest_email(customer.getEmail())
-                .OTAChannel("OTACHANNEL")  // Adjust if available
-                .parent_property(reservation.getHotel_id())
+                .ota_room_id(room.getRoomreservation_id())
+                .ota_booking_rev(reservation.getReservation_notif_id())
                 .build();
     }
 

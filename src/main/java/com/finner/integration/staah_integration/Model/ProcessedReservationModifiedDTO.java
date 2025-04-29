@@ -41,8 +41,8 @@ public class ProcessedReservationModifiedDTO {
     @JsonProperty("checkOutdate")
     private String checkOutdate;
 
-    @JsonProperty("phone_countryC")
-    private String phone_countryC;
+    @JsonProperty("phone_countryCode")
+    private String phone_countryCode;
 
     @JsonProperty("room_category")
     private String room_category;
@@ -77,12 +77,14 @@ public class ProcessedReservationModifiedDTO {
     @JsonProperty("guest_address")
     private String guest_address;
 
-    @JsonProperty("meal_plan_optic")
-    private String meal_plan_optic;
+    @JsonProperty("meal_plan_optionset")
+    private String meal_plan_optionset;
 
     @JsonProperty("modification_reason")
     private String modification_reason; // Extra field for modified reservations
 
+    @JsonProperty("channel_manager_id")
+    private String channel_manager_id;
     // Private constructor using Builder
 
 }

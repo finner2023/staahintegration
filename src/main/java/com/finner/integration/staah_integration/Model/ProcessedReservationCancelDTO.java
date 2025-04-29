@@ -13,35 +13,37 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor        // Generates default no-args constructor
 @AllArgsConstructor
 public class ProcessedReservationCancelDTO {
-    @JsonProperty("otabooking_id")
-    private String otabooking_id;
+    @JsonProperty("parent_property")
+    private String parent_property;
+
+    @JsonProperty("total_amount")
+    private Double total_amount;
+
+    @JsonProperty("tax_amount")
+    private Double tax_amount;
+
+    @JsonProperty("OTA_Channel")
+    private String OTA_Channel;
+
+    @JsonProperty("checkIn_date")
+    private String checkIn_date;
+
+    @JsonProperty("checkOut_date")
+    private String checkOut_date;
+
+    @JsonProperty("room_category")
+    private String room_category;
+
+    @JsonProperty("ota_booking_id")
+    private String ota_booking_id;
 
     @JsonProperty("ota_property_id")
     private String ota_property_id;
 
-    @JsonProperty("reason_of_cancellation")
-    private String reason_of_cancellation;
+    @JsonProperty("ota_room_id")
+    private String ota_room_id;
 
-    @JsonProperty("pms_transaction_id")
-    private String pms_transaction_id;
-
-    @JsonProperty("cancelled_by")
-    private String cancelled_by;
-
-    @JsonProperty("guest_name")
-    private String guest_name;
-
-    @JsonProperty("guestphone")
-    private String guestphone;
-
-    @JsonProperty("guest_email")
-    private String guest_email;
-
-    @JsonProperty("OTAChannel")
-    private String OTAChannel;
-
-    @JsonProperty("parent_property")
-    private String parent_property;
-
+    @JsonProperty("ota_booking_rev")
+    private String ota_booking_rev;
 
 }
