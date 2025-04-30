@@ -154,6 +154,9 @@ public class PollingService {
                 .doOnComplete(() -> {
                     log.info("✅ Finished one full polling cycle.");
                 })
-                .subscribe();
+                .subscribe(
+                        unused -> {},
+                        error -> log.error("🔴 Final error subscriber caught: {}", error.getMessage(), error)
+                );
     }
 }
