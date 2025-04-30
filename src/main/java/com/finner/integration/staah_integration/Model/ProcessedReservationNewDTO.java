@@ -82,4 +82,7 @@ public class ProcessedReservationNewDTO {
 
     @JsonProperty("channel_manager_id")
     private String channel_manager_id;
+
+    @JsonProperty("group_reservation_id")
+    private String group_reservation_id;
 }

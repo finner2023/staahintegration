@@ -45,5 +45,7 @@ public class ProcessedReservationCancelDTO {
 
     @JsonProperty("ota_booking_rev")
     private String ota_booking_rev;
+    @JsonProperty("group_reservation_id")
+    private String group_reservation_id;
 
 }

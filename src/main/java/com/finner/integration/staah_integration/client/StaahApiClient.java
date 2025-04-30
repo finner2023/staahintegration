@@ -46,7 +46,7 @@ public class StaahApiClient {
         String encodedAuth = Base64.getEncoder().encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
 
         Map<String, Object> requestBody = Map.of(
-                   "hotelid","1563055671"
+                   "hotelid","1744883633"
 //                "fromDate", "2024-03-24",
 //                "toDate", "2024-03-25"
         );

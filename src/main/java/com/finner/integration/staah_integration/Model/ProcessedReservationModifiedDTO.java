@@ -86,5 +86,7 @@ public class ProcessedReservationModifiedDTO {
     @JsonProperty("channel_manager_id")
     private String channel_manager_id;
     // Private constructor using Builder
+    @JsonProperty("group_reservation_id")
+    private String group_reservation_id;
 
 }

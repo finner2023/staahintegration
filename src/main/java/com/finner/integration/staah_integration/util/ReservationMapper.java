@@ -12,7 +12,8 @@ public class ReservationMapper {
     public static ProcessedReservationNewDTO mapToNewProcessed(StaahReservation reservation, Room room) {
         Customer customer = reservation.getCustomer();
         int days = calculateDays(room.getArrival_date(), room.getDeparture_date());
-        Price price=reservation.getPrice().get(0);
+        Price price = room.getPrice() != null && !room.getPrice().isEmpty() ? room.getPrice().get(0) : new Price();
+
         return ProcessedReservationNewDTO.builder()
                 .guest_name(customer.getFirst_name() + " " + customer.getLast_name())
                 .guest_email(customer.getEmail())
@@ -33,7 +34,8 @@ public class ReservationMapper {
                 .total_amount(parseDouble(reservation.getCommissionamount()))
                 .pms_transaction_id(room.getRoomreservation_id())
                 .pay_hotel_OTA(reservation.getPaymenttype())
-                .OTA_Channel(reservation.getSource()) // Mapped from affiliation/source field
+                //.OTA_Channel(reservation.getSource()) // Mapped from affiliation/source field
+                .OTA_Channel("BookingCom")
                 .ota_booking_id(reservation.getChannel_booking_id()) // Actual OTA booking ID
                 .meal_plan_optionset(price.getMealplan_id())
                 .channel_manager_id(reservation.getHotel_id())
@@ -43,7 +45,8 @@ public class ReservationMapper {
     public static ProcessedReservationModifiedDTO mapToModifiedProcessed(StaahReservation reservation, Room room, String modificationReason) {
         Customer customer = reservation.getCustomer();
         int days = calculateDays(room.getArrival_date(), room.getDeparture_date());
-        Price price=reservation.getPrice().get(0);
+        Price price = room.getPrice() != null && !room.getPrice().isEmpty() ? room.getPrice().get(0) : new Price();
+
         Affiliation affiliation=reservation.getAffiliation();
 
         return ProcessedReservationModifiedDTO.builder()
@@ -79,7 +82,8 @@ public class ReservationMapper {
     public static ProcessedReservationCancelDTO mapToCancelProcessed(StaahReservation reservation, Room room, String cancelReason) {
         Customer customer = reservation.getCustomer();
         int days = calculateDays(room.getArrival_date(), room.getDeparture_date());
-        Price price=reservation.getPrice().get(0);
+        Price price = room.getPrice() != null && !room.getPrice().isEmpty() ? room.getPrice().get(0) : new Price();
+
         Affiliation affiliation=reservation.getAffiliation();
         return ProcessedReservationCancelDTO.builder()
                 .parent_property("")
@@ -97,6 +101,31 @@ public class ReservationMapper {
     }
 
     // Helper methods
+    public static GroupReservationDTO mapToGroupCommonDTO(StaahReservation reservation) {
+        Customer customer = reservation.getCustomer();
+        Room firstRoom = reservation.getRooms().get(0); // Assume first room for general dates, guest count, etc.
+
+        return GroupReservationDTO.builder()
+                .guest_name(customer.getFirst_name() + " " + customer.getLast_name())
+                .guest_email(customer.getEmail())
+                .parent_property(reservation.getHotel_id())
+                .total_amount(parseDouble(reservation.getTotalprice()))
+                .tax_amount(parseDouble(reservation.getTotaltax()))
+                .OTA_Channel(reservation.getAffiliation() != null ? reservation.getAffiliation().getPos() : "")
+                .guest_phone(safeParseLong(customer.getTelephone()))
+                .checkIn_date(firstRoom.getArrival_date())
+                .checkOut_date(firstRoom.getDeparture_date())
+                .phone_countryC(customer.getCountrycode())
+                .no_of_guest(parseInt(firstRoom.getNumberofguests()))
+                .guest_address(customer.getAddress())
+                .currency(reservation.getCurrencycode())
+                .ota_booking_id(reservation.getChannel_booking_id())
+                .ota_revision_id(reservation.getReservation_notif_id())
+                .pay_hote_ota(reservation.getPaymenttype())
+                .Nationality(customer.getCountrycode())
+                .meal_plan_optio("") // Optional as per UI screenshot
+                .build();
+    }
 
 
     private static int calculateDays(String checkin, String checkout) {
