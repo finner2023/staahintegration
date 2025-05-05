@@ -2,12 +2,14 @@ package com.finner.integration.staah_integration.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finner.integration.staah_integration.Model.StaahReservation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+@Slf4j
 @Service
 public class ReservationHashCacheService {
     private final Map<String,String> fullResponseHashCache=new ConcurrentHashMap<>();
@@ -20,6 +22,8 @@ public class ReservationHashCacheService {
             String currentHash=hash(currentJson);
             String previousHash=fullResponseHashCache.get(hotelId);
             boolean same=currentHash.equals(previousHash);
+             log.info("hash for reservation",currentHash);
+             log.info("hash of prev reservation",previousHash);
             if(!same) fullResponseHashCache.put(hotelId,currentHash);
             return same;
         } catch (JsonProcessingException e) {
@@ -30,9 +34,9 @@ public class ReservationHashCacheService {
         try {
             String currentJson=objectMapper.writeValueAsString(reservation);
             String currentHash=hash(currentJson);
-            String previousHash=fullResponseHashCache.get(reservationId);
+            String previousHash=reservationHashCache.get(reservationId);
             boolean same=currentHash.equals(previousHash);
-            if(!same) fullResponseHashCache.put(reservationId,currentHash);
+            if(!same) reservationHashCache.put(reservationId,currentHash);
             return same;
         }catch(Exception e){
             e.printStackTrace();

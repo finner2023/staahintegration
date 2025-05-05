@@ -99,6 +99,7 @@ public class StaahApiClient {
                 .uri("https://connect-sandbox.su-api.com/SUAPI/jservice/Reservation_notif")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .header(HttpHeaders.AUTHORIZATION, "Basic " + key) // Use your base64 encoded credentials
+                .header("app-id", appId)
                 .bodyValue(payload)
                 .retrieve()
                 .toBodilessEntity()

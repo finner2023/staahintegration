@@ -29,8 +29,8 @@ public class ProcessedReservationModifiedDTO {
     @JsonProperty("tax_amount")
     private double tax_amount;
 
-    @JsonProperty("OTAChannel")
-    private String OTAChannel;
+    @JsonProperty("OTA_Channel")
+    private String OTA_Channel;
 
     @JsonProperty("guestphone")
     private String guestphone;
@@ -38,8 +38,8 @@ public class ProcessedReservationModifiedDTO {
     @JsonProperty("checkin_date")
     private String checkin_date;
 
-    @JsonProperty("checkOutdate")
-    private String checkOutdate;
+    @JsonProperty("checkOut_date")
+    private String checkOut_date;
 
     @JsonProperty("phone_countryCode")
     private String phone_countryCode;
@@ -56,20 +56,20 @@ public class ProcessedReservationModifiedDTO {
     @JsonProperty("meal_plan")
     private String meal_plan;
 
-    @JsonProperty("otabooking_id")
-    private String otabooking_id;
+    @JsonProperty("ota_booking_id")
+    private String ota_booking_id;
 
     @JsonProperty("ota_property_id")
     private String ota_property_id;
 
-    @JsonProperty("otaroomid")
-    private String otaroomid;
+    @JsonProperty("ota_room_id")
+    private String ota_room_id;
 
     @JsonProperty("ota_booking_rev")
     private String ota_booking_rev;
 
-    @JsonProperty("pay_hotelOTA")
-    private String pay_hotelOTA;
+    @JsonProperty("pay_hotel_OTA")
+    private String pay_hotel_OTA;
 
     @JsonProperty("Natonality")
     private String Natonality;

@@ -60,7 +60,7 @@ public class TestPushSingleReservation {
         dto.setOTA_Channel("BookingCom"); // ✅ Set valid OTA option set
         dto.setMeal_plan_optionset("Breakfast"); // ✅ Same value as meal_plan
         dto.setOta_booking_id("OTABOOKINGID"); // ✅ Set dummy booking ID if needed
-
+        dto.setOta_room_id("1744883695");
         System.out.println("📦 Generated DTO:\n" + dto);
 
         // ✅ Push to PMS
